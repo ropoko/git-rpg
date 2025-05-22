@@ -1,5 +1,6 @@
 local lummander = require('lummander')
 local Character = require('src.character')
+local config = require('config')
 
 local app = lummander.new({
 	title = 'git-rpg',
@@ -11,7 +12,7 @@ local app = lummander.new({
 	flag_prevent_help = false
 })
 
-app:command('character <command> [args...]', 'handle all character related commands | <new>')
+app:command('char <command> [args...]', 'handle all character related commands | <new>')
 		:action(function(parsed, cmd)
 			local command = parsed.command
 
@@ -19,8 +20,9 @@ app:command('character <command> [args...]', 'handle all character related comma
 				-- TODO: check required arguments
 				local name = parsed.args[1]
 				local class = parsed.args[2]
+				local path_ssh_key = parsed.args[3]
 
-				local character = Character:new(name, class)
+				local character = Character:new(name, class, path_ssh_key)
 				character:save()
 			end
 		end)

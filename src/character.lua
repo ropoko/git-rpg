@@ -2,6 +2,8 @@ local md5 = require('md5')
 local lfs = require('lfs')
 local base64 = require('base64')
 local Classes = require('src.classes')
+local GitHelper = require('src.git_helper')
+local ActionsType = require('src.actions').ActionsType
 
 local Character = {}
 
@@ -71,6 +73,7 @@ return {
 		))
 
 		file:close()
+		GitHelper:save(ActionsType.create_player, data.name)
 
 		return true
 	end

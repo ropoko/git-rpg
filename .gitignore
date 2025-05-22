@@ -2,4 +2,9 @@
 /lua
 /lua_modules
 /.luarocks
+.DS_Store
+
+game-repo
 game/
+.players/
+.quests/
